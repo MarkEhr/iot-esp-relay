@@ -3,7 +3,7 @@
 
 Config::Config() {
     // For now, these are hardcoded. Later, you might read them from EEPROM or another storage.
-    relayPin = D8;
+    relayPin = D0;
     wifiSSID = "tide";
     wifiPassword = "eltideano";
     webSocketServerIP = "72.167.222.190";

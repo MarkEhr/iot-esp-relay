@@ -3,15 +3,17 @@
 
 Relay::Relay(int pin) : pin_(pin), isOn_(false), activatedTime_(0) {}
 
+byte ON_STATE = HIGH;
+
 void Relay::setup() {
     pinMode(pin_, OUTPUT);
-    digitalWrite(pin_, HIGH);  // Initial state
+    digitalWrite(pin_, !ON_STATE);  // Initial state
     pinMode(LED_BUILTIN, OUTPUT);
     digitalWrite(LED_BUILTIN, HIGH);  // Initial state
 }
 
 void Relay::toggle(bool state) {
-    digitalWrite(pin_, state ? LOW : HIGH);
+    digitalWrite(pin_, state ? ON_STATE : !ON_STATE);
     digitalWrite(LED_BUILTIN, state ? LOW : HIGH);
     if (state) {
         activatedTime_ = millis();
